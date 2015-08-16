@@ -3,6 +3,7 @@
 =======
 ### Maintainable JavaScript
 
+#### Setup
 If you have already got `node` & `npm` installed locally, goto step 2.
 
 1. Install `npm` along with `Node.js`
@@ -33,4 +34,19 @@ If you have already got `node` & `npm` installed locally, goto step 2.
 6. To run JSHint, execute the following command in terminal
 
 		gulp js
->>>>>>> Ni: Add readme and update package.json
+
+=======
+
+#### Working with location backend service
+
+1. Get all locations
+
+		http://location-backend-service.herokuapp.com/locations
+
+2. Filter locations by name
+
+		http://location-backend-service.herokuapp.com/locations?name=Melbourne
+
+	`name` is case insensitive, and could be partial.
+
+		http://location-backend-service.herokuapp.com/locations?name=mel
