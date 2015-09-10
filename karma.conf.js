@@ -15,24 +15,24 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'spec/**/*-spec.js',
-      'vendor/jquery/dist/jquery.min.js',
-        'vendor/jasmine-jquery/lib/jasmine-jquery.js',
-        'spec/javascript/fixtures/fixtures.html',
-        'vendor/underscore/underscore-min.js',
-        'src/js/*.js',
-        'vendor/jasmine-ajax/lib/mock-ajax.js'
+      'spec/**/*-spec.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+      'src/js/app.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'spec/**/*-spec.js': ['browserify']
+    },
+
+    browserify: {
+      transform: [ 'reactify', 'rewireify' ]
     },
 
 

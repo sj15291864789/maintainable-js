@@ -1,35 +1,20 @@
 /**
- * Created by jshen on 8/19/15.
+ * Created by jshen on 8/27/15.
  */
 describe('location search spec', function() {
     var onSuccess, onFailure, request, response, search;
     beforeEach(function () {
         jasmine.getFixtures().fixturesPath = 'base/spec/javascript/fixtures';
-        loadFixtures("fixtures.html");
-        expect($('#searchButton')).toExist();
+        loadFixtures("search-form.html");
         jasmine.Ajax.install();
         response = [{"name": "beijing", "description": "didu"}];
     });
     describe("search spec", function() {
 
-        it("should call callback function with correct result", function() {
-            var likePlace = new LikePlaces();
-            $('body').trigger("like", "beijing");
-
-            var htmlText = '<li class="like">beijing</li>';
-
-            expect($('#likedPlaces').find('ul').find('li')).toHaveText('beijing');
-
-            var searchRes = new SearchResultList();
-            $('body').trigger("display", {data: response});
-
-            htmlText = '<div class="panel large-12 columns">' +
-                '<h5>beijing</h5>' +
-                '<h6>didu</h6>' +
-                '<a href="#" class="like button tiny right">Like</a>' +
-                '</div>';
-
-            expect($('#results')).toContainHtml(htmlText);
+        it("find correct result when button clicked", function() {
+            var searchView = new SearchView();
+            searchView.render();
+            expect($('#searchButton')).toExist();
 
             //search = new Search();
             //$(document).trigger('search', 'beijing');
@@ -39,6 +24,7 @@ describe('location search spec', function() {
             //spyOn(domOperator, 'appendLocationList');
             ////onFailure = jasmine.createSpy('onFailure');
             //locationSearch.search('beijing');
+
             //request = jasmine.Ajax.requests.mostRecent();
             //expect(request.url).toBe('http://location-backend-service.herokuapp.com/locations?name=beijing');
             //expect(request.method).toBe('GET');
